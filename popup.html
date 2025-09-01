@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Summarizer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 YouTube Summarizer</h1>
+            <p class="subtitle">Powered by Gemini 2.5 Flash</p>
+        </header>
+        
+        <main>
+            <!-- Video Info -->
+            <div id="video-info" class="video-info hidden">
+                <h3 id="video-title">YouTube Video</h3>
+                <p class="video-url" id="video-url"></p>
+            </div>
+            
+            <!-- Progress Section -->
+            <div id="progress-section" class="progress-section hidden">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <div id="progress-message" class="progress-message">Ready to summarize...</div>
+                <div id="current-step" class="current-step">Step 0 of 5</div>
+            </div>
+            
+            <!-- Summary Display -->
+            <div id="summary-section" class="summary-section hidden">
+                <h3>📝 Summary</h3>
+                <div id="summary-content" class="summary-content"></div>
+                <div class="summary-actions">
+                    <button id="copy-btn" class="btn btn-secondary">📋 Copy</button>
+                    <button id="new-summary-btn" class="btn btn-secondary">⚡ Short Version</button>
+                </div>
+                <div class="summary-preferences">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="default-short-mode" />
+                        <span class="checkmark"></span>
+                        Always use short version by default
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Error Display -->
+            <div id="error-section" class="error-section hidden">
+                <h3>❌ Error</h3>
+                <p id="error-message"></p>
+                <button id="retry-btn" class="btn btn-primary">🔄 Try Again</button>
+            </div>
+            
+            <!-- Default State -->
+            <div id="default-section" class="default-section">
+                <div class="icon">🎬</div>
+                <p>Navigate to a YouTube video or right-click on a YouTube link to automatically start summarizing!</p>
+            </div>
+            
+            <!-- Auto-summarization in progress - no button needed -->
+        </main>
+        
+        <footer>
+            <button id="settings-btn" class="btn-text">⚙️ Settings</button>
+        </footer>
+        
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                    <button id="close-settings" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <label for="api-key">Gemini API Key:</label>
+                        <input type="password" id="api-key" placeholder="Enter your Gemini API key">
+                        <small>Get your API key from <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a></small>
+                    </div>
+                    <div class="setting-group">
+                        <button id="save-settings" class="btn btn-primary">💾 Save Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
